@@ -17,7 +17,7 @@
 (load-user-file "config/init_core.el")
 (load-user-file "config/startup.el")
 (load-user-file "config/packages.el")
-(load-user-file "config/themes.el")
+(load-user-file "config/appearance.el")
 
 ;; Using evil mode everywhere.
 (evil-mode 1)

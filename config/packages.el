@@ -7,7 +7,9 @@
 ;; List of packages
 (use-package org)
 (use-package evil)
+(use-package flycheck)
 (use-package magit)
+(use-package web-mode)
 (use-package python-mode)
 (use-package company)
 (use-package neotree
