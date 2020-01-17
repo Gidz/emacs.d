@@ -1,40 +1,23 @@
-;; Start by initializing essential packages.
-(require 'package)
+;; BEGIN HELPER FUNCTIONS 
+(defconst user-init-dir
+  (cond ((boundp 'user-emacs-directory)
+         user-emacs-directory)
+        ((boundp 'user-init-directory)
+         user-init-directory)
+        (t "~/.emacs.d/")))
 
-;; Remote sources
-(setq package-archives '(("org"       . "http://orgmode.org/elpa/")
-                            ("gnu"       . "http://elpa.gnu.org/packages/")
-                            ("melpa"     . "http://melpa.milkbox.net/packages/")
-                            ("marmalade" . "http://marmalade-repo.org/packages/")))
-
-;; Initialize the packages and refresh contents
-(package-initialize)
-(package-refresh-contents)
-
-(require 'use-package)
+(defun load-user-file (file)
+  (interactive "f")
+  "Load a file in current user's configuration directory"
+  (load-file (expand-file-name file user-init-dir)))
+;; END HELPER FUNCTIONS
 
 
-;; use-package comnfiguration
-(setq use-package-always-ensure t)
+;; Load the config files from the config directory.
+(load-user-file "config/init_core.el")
+(load-user-file "config/startup.el")
+(load-user-file "config/packages.el")
+(load-user-file "config/themes.el")
 
-;; List of packages
-(use-package org)
-(use-package evil)
-(use-package magit)
-(use-package python-mode)
-(use-package company)
-
+;; Using evil mode everywhere.
 (evil-mode 1)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (helm python-mode magit evil use-package))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
