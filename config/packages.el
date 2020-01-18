@@ -13,9 +13,12 @@
 (use-package web-mode)
 (use-package elpy)
 (use-package company)
-(use-package neotree
-  :config (global-set-key "\C-x\ d" 'neotree-toggle))
+(use-package neotree)
+(use-package all-the-icons)
 
+;; Downloading some nice looking themes.
+(use-package solarized-theme :demand t)
+(use-package doom-themes  :demand t)
 
 ;; Company mode default.
 (add-hook 'after-init-hook 'global-company-mode)
