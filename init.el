@@ -12,13 +12,24 @@
   (load-file (expand-file-name file user-init-dir)))
 ;; END HELPER FUNCTIONS
 
+(load-user-file "config/init_core.el")
+
+; Bootstrap `use-package`
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(require 'use-package)
 
 ;; Load the config files from the config directory.
-(load-user-file "config/init_core.el")
 (load-user-file "config/startup.el")
 (load-user-file "config/packages.el")
 (load-user-file "config/appearance.el")
+(load-user-file "config/neotree.el")
 (load-user-file "config/org.el")
+(load-user-file "config/file_associations.el")
+
+;; It's better to load this file the last.
+(load-user-file "config/key_bindings.el")
 
 ;; Using evil mode everywhere.
 (evil-mode 1)
@@ -33,7 +44,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (helm web-mode use-package solarized-theme python-mode neotree magit flycheck evil doom-themes company))))
+    (lsp-mode helm web-mode use-package solarized-theme python-mode neotree magit flycheck evil doom-themes company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
