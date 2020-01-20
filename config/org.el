@@ -3,10 +3,14 @@
 ;; Customizing task states.
 (setq org-todo-keywords '((sequence "TODO" "BLOCKED" "IN-PROGRESS" "DONE")))
 
-;; Org agenda.
-(setq org-agenda-files '("~/Crypt/notebook"))
+;; Logging time when a task is set to DONE.
+;; Also taking notes when it is set to DONE.
+(setq org-log-done 'time)
+(setq org-log-done 'note)
 
-;; Capture template config.
+;;;;;;;
+;; Org Capture
+;;;;;;
 (setq org-capture-templates
   '(    ;; ... other templates
 
@@ -29,3 +33,11 @@
         ;; ... other templates
     )
   )
+
+;;;;;;
+;; Org agenda
+;;;;;;
+
+(setq org-agenda-files '("~/Crypt/notebook"))
+
+
